@@ -11,7 +11,24 @@
  
 		<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		
+		<script>
+			function calc(){
+				//1.获取存款金额（）读取文本框里用户输入的数据
+				var cunkuanjine = document.getElementById("amount").value;
+				//上面这句话吧取到的值是“80000”不能做计算
+				//“8000”-->8000
+				var cunkuannum = parseInt(cunkuanjine);//字符串转成整数
+				//2.开始计算
+				//取年利率
+				var lilv=document.getElementById("year").value;
+				var lilvnum = parseFloat(lilv);
+				var lixi=cunkuannum*lilv;
+				var total=cunkuannum + lixi;
+				//3.把计算的结果写入代码显示出来
+				document.getElementById("lixi").value=lixi;
+				document.getElementById("total").value=total;
+			}
+		</script>
 	</head>
 	<body>
 		<div class="container" align="center">
@@ -40,7 +57,7 @@
 				<tr>
 					<td>所得利息</td>
 					<td>
-						<input type="text" id="totale" class="form-control" readonly="readonly">
+						<input id="lixi" type="text" class="form-control" readonly="readonly">
 					</td>
 				</tr>
 				<tr>
@@ -51,7 +68,7 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<button class="btn btn-primary btn-block">计算</button>
+						<button onclick="calc()" class="btn btn-primary btn-block">计算</button>
 					</td>
 				</tr>
 			</table>
